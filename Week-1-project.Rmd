@@ -1,6 +1,6 @@
 # Week 1 Project  
 
-## Your name should appear here!
+## Nicola Morrow 
 
 <!-- leave this material as is -->
 Compiled on `r date()`.
@@ -9,5 +9,14 @@ Compiled on `r date()`.
 library(DataComputing)
 ```
 <!-- put your content after this line -->
+Derek Parfit was one of the most influential contemporary moral philosophers. He authored two major works:
 
-Here is my content!
+* Reasons and Persons 
+* On What Matters  
+
+Derek Parfit died on the first day of January, 2017. He left behind his wife, Janet Radcliffe Richards, another influential philosopher of our time. 
+
+[Here](http://www.lrb.co.uk/blog/2017/01/06/amia-srinivasan/remembering-derek-parfit/) is a link to a beautiful tribute written by one of his students. 
+
+![a picture of Derek Parfit](http://dailynous.com/wp-content/uploads/2017/01/parfit-2.jpg)
+
