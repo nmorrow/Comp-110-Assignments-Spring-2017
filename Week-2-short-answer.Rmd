@@ -1,6 +1,6 @@
 # Week 2 Short Answer Questions
 
-## Your name should appear here!
+## Nicola Morrow
 
 <!-- leave this material as is -->
 Compiled on `r date()`.
@@ -10,4 +10,217 @@ library(DataComputing)
 ```
 <!-- put your content after this line -->
 
-Here is my content!
+#1.1 
+
+a) 3. It's the value of a variable for a particular case. 
+
+b) It's a quantitative variable. 
+
+c) 1. It's a categorical variable. 
+
+d) 1. It's a categorical variable. 
+
+e) 2. It's a quantitative variable. 
+
+#1.2
+
+This table isn't tidy because the rows and columns do not represent the same underlying attribute. The first row, for example, describes the type of data to be found below. In the "number of states" column, which should be a quantitative variable, one of the values is categorical. 
+
+#1.4
+
+1. The variables in Table A are "year" and "value." The variables in Table B are "country" and "value." The variables in Table C are "country," "year," and "value."
+
+2. Each case for Table A is a given year. Each case for Table B is a given country. Each case for Table C is a particular country in a given year. 
+
+#1.5
+
+1. There are four variables: FAA airport code, usual name of airport, location of airport, and altitude.
+
+2. Each case represents a particular airport.
+
+3. "FAA" will be categorical. "name" will be categorical. "lat,lon" will be quantiative. "alt" will be quantitative.
+
+#2.2
+
+File name is the only kind of name that should be wrapped with quotation marsk when used in R. 
+
+#2.3 
+
+CPS means "Current Population Survey."
+
+#2.4 
+
+This statement should read: help(NHANES, package = "NHANES"), using a "=" rather than a "<-"
+
+#2.6
+
+"first-essay"" is not a legitimiate object name because it includes punctuation. '"MyData"' is not a legitimate object name because it includes punctuation. "small sample" is not a legitimate object name because it includes a space. sqrt() is not a legitimate object name because it is an existing function. 
+
+#2.7
+
+1. There are 19 variables. 
+
+2. There are 336,776 cases. 
+
+3. Each case represents a given flight in 2013. 
+
+4. The only variables that are not quantitative are: carrier, tailnum, origin, and dest. 
+
+5. air_time is measured in minutes. distance is measured in miles. 
+
+#2.8
+
+a. This assignment statement used improper syntax for function argument. This should be ralph <- sqrt(10). It was missing the parentheses. 
+
+b. This assignment statement doesn't have an assignment operator. It should be ralph2 <- "Hello to you!"
+
+c. This assignment statement has an invalid object name. 
+
+d. This assignment statement has unmatched quotes in the character string. 
+
+e. This assignment doesn't have a mistake. 
+
+#2.9 
+
+The following characers can be used in the name of an R object: . _
+
+The following characters can be used in a quoted character string: . , _ - ^ ()
+
+#2.10 
+
+There are 76 variables in CountryData. 
+
+tfat measures mass of trunk fat in NCHS.
+
+There are 23,018 cases in WorldCities. 
+
+Count is the third variable in BabyNames. 
+
+DEM stands for Democratic, LIB stands for Libertarian, REP stands for Republican, and UNA stands for Unaffiliated in the RegisteredVoters data table. 
+
+#3.1
+
+1. Fireplace
+
+2. fireplace()
+
+3. "fireplace"
+
+4. fireplace
+
+#3.2 
+
+This sentence is illegitmate because %>% has to go at the end of a command to transform the the value on the left side into the first argument on the right side. 
+
+#3.3 
+
+This statement uses the same name for the dataset and the package. These must have two different names, otherwise R will be confused. 
+
+#3.4
+
+BabyNames = data table name 
+
+filter = function name 
+
+name = name of a named argument 
+
+== = function name 
+
+group_by = function name
+
+year = variable 
+
+sex = variable 
+
+summarise = function name
+
+yearlyTotal = name of a named argument 
+
+sum = function name 
+
+count = variable
+
+ggplot = function name 
+
+aes = function name 
+
+x = name of a named argument 
+
+y = name of a named argument 
+
+geom_point = function name 
+
+color = variable 
+
+geom_vline = function name 
+
+xintercept = name of a named argument 
+
+#3.5 
+
+brainwt means brain weight in kilograms. 
+
+There are 83 cases. 
+
+Each case represents a different species of mammal. 
+
+The levels of the vore variable are carnivore, omnivore, and herbivore. 
+
+#3.6 
+
+(c) is the only statement that does not match the others. 
+
+#4.1
+
+italic
+
+bold 
+
+header 
+
+inline R code 
+
+double header
+
+linked phrase 
+
+#4.2
+
+a) uses ''' instead of ```
+
+b) uses """ instead of ```
+
+c) does not conclude code block with ```
+
+d) uses does not use ``` to conclude code block 
+
+e) uses ```` instead of ``` to conclude code block 
+
+#4.3 
+
+### An Introduction 
+
+Arithmeteic is *easy*! For instance 
+```{r}
+3+2
+```
+
+Done on paper, as instructed :) 
+
+#4.4
+
+1. a possible file
+
+2. a possible file 
+
+3. neither 
+
+4. a possible URL
+
+5. neither
+
+6. both 
+
+#4.5
+
+Done in different file. 
