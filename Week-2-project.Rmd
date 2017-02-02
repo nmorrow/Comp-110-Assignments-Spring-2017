@@ -1,6 +1,6 @@
 # Week 2 Project
 
-## Your name should appear here!
+## Nicola Morrow
 
 <!-- leave this material as is -->
 Compiled on `r date()`.
@@ -10,4 +10,46 @@ library(DataComputing)
 ```
 <!-- put your content after this line -->
 
-Here is my content!
+I will be using data from the Macalester College library. The data is copied from http://tiny.cc/dcf/Library-small.rda.
+
+##**Basics**
+
+```{r}
+load("Library-small.rda")
+```
+
+Number of cases in Inv:
+```{r}
+nrow(Inv)
+```
+
+Names of variables in Inv:
+```{r}
+names(Inv)
+```
+
+Number of cases in Bks:
+```{r}
+nrow(Bks)
+```
+
+Names of variables in Bks:
+```{r}
+names(Bks)
+```
+
+Number of books with each different Current.status:
+```{r}
+Inv %>%
+  group_by(Current.Status) %>%
+  tally()
+```
+
+How many books have been checked out? 
+```{r}
+X <- Inv %>%
+  group_by(Issued.Count) %>%
+  tally()
+```
+
+This table has two colums. The first shows the number of times a book has been issued. The second column shows how many books have been issued that many times. For example, there are 996 books that have been issued 0 times. There are 337 books that have been issued once. And so on. 
