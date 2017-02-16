@@ -1,6 +1,6 @@
 # Week 3 Project
 
-## Your name should appear here! 
+## Nicola Morrow
 
 <!-- leave this material as is -->
 Compiled on `r date()`.
@@ -10,4 +10,112 @@ library(DataComputing)
 ```
 <!-- put your content after this line -->
 
-Here is my content!
+## Deconstructing graphics
+
+This is a density plot. 
+
+The variables in these graphs include: sex, body mass index, and pregnancy status. 
+
+The sex variable is indicated by color and shows the difference in BMI between males and females. Body mass index is indicated by position along the x axis. Pregnancy status helps show the difference in BMI between pregnant and non-pregnant people, and is indicated by facet. 
+
+There is no data-variable being used for the y-axis in in Figure 2 because it is the second facet of the image, and it is implied that it has the same y-axis as the first facet. 
+
+```{r}
+ggplot(data = NCHS, aes(x = bmi)) + geom_density(aes(color = sex)) + facet_wrap(~ pregnant)
+```
+
+## Diamonds
+
+### 1
+
+```{r}
+data("diamonds")
+
+diamonds %>% 
+  group_by( color ) %>% 
+  summarise( average=mean(carat) ) %>% 
+  arrange(desc( average )) %>% 
+  head( 10 )
+```
+
+Diamonds of the color "J" (worst) seem to be the largest. 
+
+### 2
+```{r}
+diamonds %>% 
+  group_by( clarity ) %>% 
+  summarise( average=mean(table) ) %>% 
+  arrange(desc( average )) %>% 
+  head( 10 )
+```
+
+Diamonds of the clarity "I1" (worst) seem to have the largest average table. 
+
+## Voting
+
+### 1 
+
+```{r}
+data(Minneapolis2013)
+
+tally(Minneapolis2013)
+```
+
+There are 80,101 cases. 
+
+### 2 
+
+```{r}
+Minneapolis2013 %>% 
+  group_by(Second) %>%
+  tally() %>%
+  arrange(desc(n)) %>%
+  head(5)
+```
+
+### 3 
+
+```{r}
+Minneapolis2013 %>% 
+  filter(First=="undervote") %>%
+  tally()
+```
+
+There were 834 ballots marked "undervote" in First choice selections. 
+
+```{r}
+Minneapolis2013 %>% 
+  filter(Second=="undervote") %>%
+  tally()
+```
+
+There were 10,598 ballots marked "undervote" in Second choice selections. 
+
+```{r}
+Minneapolis2013 %>% 
+  filter(Third=="undervote") %>%
+  tally()
+```
+ 
+There were 19,210 ballots marked "udnervote"in Third choice selections. 
+
+### 4 
+
+```{r}
+Minneapolis2013 %>% 
+  filter(First=="BETSY HODGES") %>%
+  group_by(Second) %>%
+  summarise(topSecond=n()) %>%
+  arrange(desc(topSecond)) %>%
+  head(3)
+```
+
+### 5 
+
+```{r}
+Minneapolis2013 %>% 
+  group_by(Precinct) %>%
+  summarise(fraction=mean(First=="undervote")) %>%
+  arrange(desc(fraction)) %>%
+    head(1)
+```
