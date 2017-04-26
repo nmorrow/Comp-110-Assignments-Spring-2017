@@ -1,6 +1,6 @@
 # Week 5 Short Answer Questions
 
-## Your name should appear here!
+## Nicola Morrow 
 
 <!-- leave this material as is -->
 Compiled on `r date()`.
@@ -10,4 +10,60 @@ library(DataComputing)
 ```
 <!-- put your content after this line -->
 
-Here is my content!
+### 10.1 
+
+The join function combines two data tables, and because only one of the data tables can be passed into the verb, the other one has to be inside of the parentheses. 
+
+### 10.2 
+
+The information in the two tables can't be represented by one table because there are cases in one that don't exist in the other and vice versa. 
+
+### 10.3 
+
+1. Table B would make it easiest to find the change from 2000 to 2001. 
+
+tableb %>%
+  mutate(diff=Y2001-Y2000)
+
+2. 
+
+Table C would make it easiest to join the country and continent data. 
+
+tablec %>%
+  left_join(ContinentData) %>%
+  group_by(Continent,Year) %>%
+  summarise(total =sum(Value))
+
+### 11.1 
+
+a. A case in Version 1 is a baby name by year and sex. A case in Version 2 is a baby name by year. A case in Version 3 is a baby name by sex.
+
+b. Version 1 is narrow and Version 2 is wide. 
+
+c. The "key" variable from the narrow table is year. 
+
+d. There are no NAs in Version 1 because it is wide and doesn't include that information. 
+
+e. Version 2 contains the same information as Version 3 despite the difference in cases because Version 3 only needed one row for "Roderick", as there are no females with that name. 
+
+f. The variable "year" was used to denote the spread columns. 
+
+g. The variables female and male were gathered into "nbabies." The "key" variable in Version 2 that apppears in Version 1 is "sex." The values "female" and "male" from Version 2 were used to create the key variable "sex" in Version 1. 
+
+### 11.3 
+
+a. A is wide, C is narrow. 
+
+b. B is wide, Cis narrow. 
+
+c. They are both the same. 
+
+### 11.4 
+
+Done! (with pencil and paper)
+
+### 11.5
+
+```{r}
+load("http://tiny.cc.dcf.MeasTreatTables.rda", destfile = "MeasTreatTables")
+```
