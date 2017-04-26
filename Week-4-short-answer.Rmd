@@ -1,6 +1,6 @@
 # Week 4 Short Answer Questions
 
-## Your name should appear here!
+## Nicola Morrow
 
 <!-- leave this material as is -->
 Compiled on `r date()`.
@@ -10,4 +10,97 @@ library(DataComputing)
 ```
 <!-- put your content after this line -->
 
-Here is my content!
+### 8.1 
+
+a) 2 
+
+b) 2
+
+c) 1
+
+d) 5
+
+e) 3
+
+f) 4
+
+g) 4
+
+h) 5
+
+i) 4
+
+### 8.2 
+
+1. 
+
+CPS85 %>% 
+  ggplot(aes(x= age, y=wage, shape=married))
+  + facet_wrap(~sector)
+
+2. 
+
+CPS85 %>% 
+  ggplot(aes(x= age, y=wage))
+  + facet_grid(~sector, married)
+
+### 8.3 
+
+Frame <-
+  CPS85 %>%
+  ggplot(aes(x=age, y=wage))
+  
+Graph A. 
+
+Frame + geom_point()
+
+Graph B. 
+
+Frame + geom_point(aes(shape=sex))
+
+Graph C. 
+
+Frame + geom_point(aes(shape=sex)) + facet_grid(married)
+
+Graph D. 
+
+Frame + geom_point(aes(shape=married)) + ylim(0,30)
+
+### 9.1 
+
+a. quick presentation 
+
+b. data verb
+
+c. transformation 
+
+d. summary function 
+
+e. data verb
+
+f. quick presentation
+
+g. data verb
+
+h. data verb
+
+i. quick presentation 
+
+### 9.3 
+
+1. 
+```{r}
+data(diamonds)
+
+diamonds %>%
+  group_by(color) %>%
+  summarise(size=mean(carat, na.rm = TRUE)) %>%
+  arrange(desc(size)) %>%
+  head(5)
+
+diamonds %>%
+  group_by(clarity) %>%
+  summarise(avetable=mean(table, na.rm = TRUE)) %>%
+  arrange(desc(avetable)) %>%
+  head(5)
+```
