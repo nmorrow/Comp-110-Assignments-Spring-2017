@@ -1,6 +1,6 @@
 # Week 3 Short Answer Questions
 
-## Your name should appear here!
+## Nicola Morrow
 
 <!-- leave this material as is -->
 Compiled on `r date()`.
@@ -10,4 +10,119 @@ library(DataComputing)
 ```
 <!-- put your content after this line -->
 
-Here is my content!
+### 5.1 
+
+Done! 
+
+### 5.2 
+
+Done!
+
+### 6.5
+
+In figure 6.9, State and Polling organization define the frame (b). 
+
+### 6.6 
+
+In figure 6.9, the glyph is a rectangle with graphical attributes of color and text (d). 
+
+### 6.7
+
+In figure 6.9, the NYT poll probability for the Democratic candidate sets the order of the categorical variable in the scale for the vertical variable (d).
+
+### 6.8
+
+Small <- 
+  NCHS %>%
+  sample_n(size=5000)
+
+scatterGraphHelper(Small)
+
+I did this, but for some reason, it would not compile when I tried to knit the html file. 
+
+### 7.1
+
+a. summarise()
+
+b. mutate()
+
+c. arrange()
+
+d. filter()
+
+e. select()
+
+f. group_by()
+
+### 7.4
+
+a. In this statement, the problem is that the first line should read: BabyNames <- and then the remainder of the statement should start on the next line down. 
+
+b. In this statement, the "group_by" part of the statement should start on the following line. Also, the first term in summarise() should be "BabyNames" not "tmp."
+
+c. In this statement, the "group_by" part of the statement should start on the following line and should pipe into the next line, using "%>%"
+
+### 7.5
+
+a. arrange(sex, count)
+
+b. filter(sex == "F")
+
+c. filter(sex == "M", count >10)
+
+d. summarise(total=sum(count))
+
+e. select(name,count)
+
+### 7.7
+
+a. 
+
+BabyNames %>% 
+  group_by(year, sex) %>%
+  summarise(total=sum(count))
+
+b. 
+
+ZipGeography %>%
+  gropu_by(year,sex) %>%
+  summarise(total = sum(count))
+
+c. 
+
+Minneapolis2013 %>%
+  group_by(First) %>%
+  summarise(voteReceived=n())
+
+d. 
+
+Minneapolis2013 %>%
+  group_by(First) %>%
+  summarise(votesReceived=n())
+
+### 7.11
+
+a. sex, count, meanAge
+
+b. diagnosis, count, meanAge 
+
+c. sex, diagnosis, count, meanAge
+
+d. age, diagnosis, count, meanAge
+
+e. age, count, meanAge
+
+### 7.12
+
+1. n()
+
+2. names()
+
+3. help()
+
+4. library()
+
+5. group_by()
+
+6. summarise()
+
