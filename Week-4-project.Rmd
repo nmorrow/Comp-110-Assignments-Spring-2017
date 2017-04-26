@@ -1,13 +1,145 @@
 # Week 4 Project
 
-## Your name should appear here!
+## Nicola Morrow
 
 <!-- leave this material as is -->
 Compiled on `r date()`.
 
 ```{r include = FALSE}
 library(DataComputing)
+library(lubridate)
+library(mosaicData)
+library(dplyr)
 ```
+
 <!-- put your content after this line -->
 
-Here is my content!
+### 1 
+
+```{r}
+DailyBirths <- 
+  Birthdays %>%
+  group_by(date) %>%
+  summarise(total=sum(births))
+
+View(DailyBirths)
+
+plot(total ~ date, data=DailyBirths)
+```
+
+### 2
+
+#### a)
+
+```{r}
+library(lubridate)
+
+Birthdays$week = week(Birthdays$date)
+
+Weekly <-
+  Birthdays %>%
+  group_by(week) %>%
+  summarise(total=sum(births))
+```
+
+#### b)
+
+```{r}
+Monthly <- 
+  Birthdays %>%
+  group_by(month) %>%
+  summarise(total=sum(births))
+
+plot(total~month, data=Monthly)
+```
+
+#### c)
+
+```{r}
+Birthdays$Julian = yday(Birthdays$date)
+
+Julian <- 
+  Birthdays %>%
+  group_by(Julian) %>%
+  summarise(total=sum(births))
+
+plot(total~Julian, data=Julian)
+```
+
+### 3
+
+```{r}
+Birthdays$weekday = wday(Birthdays$date)
+
+weekday <-
+  Birthdays %>%
+  group_by(weekday) %>%
+  summarise(total=sum(births))
+
+plot(total~weekday, data=weekday)
+```
+
+### 4 
+
+```{r}
+MyTwoYears1 <- 
+  filter(Birthdays, year=="1980") %>%
+  group_by(date) %>%
+  summarise(total=sum(births))
+
+MyTwoYears2 <-
+  filter(Birthdays, year=="1981") %>%
+  group_by(date) %>%
+  summarise(total=sum(births))
+
+MyTwoYears <-
+  rbind(MyTwoYears1,MyTwoYears2)
+
+MyTwoYears$wday = factor(wday(MyTwoYears$date))
+  
+p <- ggplot(MyTwoYears, aes(x = date, y = total, color = wday)) + geom_line()
+p
+```
+
+This plot shows that births are approximately constant from week to week throughout this time period, with there being the fewest birth on weekends.  
+
+### 5
+
+```{r}
+Holidays <- read.csv("http://tiny.cc/dcf/US-Holidays.csv") %>%
+  mutate(date = as.POSIXct(lubridate::dmy(date)))
+```
+
+### 6
+
+```{r}
+Holidays1 <- 
+  filter(Holidays, year=="1980")
+
+Holidays2 <- 
+  filter(Holidays, year=="1981")
+
+Holidays <-
+  rbind(Holidays1,Holidays2)
+
+p <- ggplot(MyTwoYears, aes(x = date, y = total, color = wday)) + geom_line() + geom_vline(data=Holidays, aes(xintercept = as.numeric(date)))
+p
+
+
+# p <- ggplot(MyTwoYears, aes(x = date, y = total, color = wday)) + geom_line() + geom_vline(data=Holidays, aes(xintercept = as.numeric(date))) + geom_text(data = Holidays, mapping = aes(label = holiday, y=9500), angle = 60, hjust = 0)
+p
+```
+
+note: My work is above. I tried to get geom_text to work, but couldn't figure out how to set the holiday labels to an x-axis. 
+
+### 7 
+```{r}
+MyTwoYears2 = merge(MyTwoYears, Holidays, by="date", all=TRUE)
+MyTwoYears2$is_holiday[is.na(MyTwoYears2$holiday)] = 0
+MyTwoYears2$is_holiday[is.na(MyTwoYears2$is_holiday)] = 1
+
+MyTwoYears2$is_holiday = as.factor(MyTwoYears2$is_holiday)
+
+p <- ggplot(MyTwoYears2, aes(x = date, y = total, color = wday)) + geom_point(aes(size=is_holiday))
+p
+```
