@@ -88,4 +88,4 @@ Trips %>%
   ggplot(aes(x=time_of_day)) + geom_density(aes(color=wday)) + facet_wrap(~ client)
 ```
 
-I think it is better to facet by client and fill by weekday because it tells us which kinds of clients are most likely to shop when.  
+I think it is better to facet by client and fill by weekday because it tells us which kinds of clients are most likely to shop at what times.  
