@@ -1,6 +1,6 @@
 # Week 5 Project
 
-## Your name should appear here!
+## Nicola Morrow 
 
 <!-- leave this material as is -->
 Compiled on `r date()`.
@@ -11,3 +11,21 @@ library(DataComputing)
 <!-- put your content after this line -->
 
 Here is my content!
+
+```{r}
+download.file("http://tiny.cc/dcf/ScorecardSmall.Rda", 
+              destfile = "ScorecardSmall.Rda")
+load("ScorecardSmall.Rda")
+
+ScorecardSmall1 <- ScorecardSmall %>%
+  filter(CONTROL !=3) %>%
+  select(CONTROL, ADM_RATE, NPT41_PUB, NPT43_PUB, NPT45_PUB, NPT41_PRIV, NPT43_PRIV, NPT45_PRIV, CCSIZSET) %>%
+  filter(!CCSIZSET %in% c(1,6,7,8))
+  
+ScorecardSmall2 <- ScorecardSmall1 %>%
+  gather(key=quintile, value=netcostperyear, NPT41_PUB, NPT43_PUB, NPT45_PUB, NPT41_PRIV, NPT43_PRIV, NPT45_PRIV) %>%
+  mutate(Q = substr(quintile, 5, 5))
+
+ScorecardSmall2 %>%
+  ggplot(aes(x=ADM_RATE, y=netcostperyear)) + geom_point(alpha=.05, color = "blue") + facet_grid(CONTROL ~ Q) + stat_smooth(se = FALSE, color="black") + xlab("admissions rate, %") + ylab("net cost per year, $,000")
+```
