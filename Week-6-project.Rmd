@@ -10,7 +10,7 @@ library(DataComputing)
 ```
 <!-- put your content after this line -->
 
-```{r cache = TRUE}
+```{r}
 data_site <- 
   "http://tiny.cc/dcf/2014-Q4-Trips-History-Data-Small.rds" 
 Trips <- readRDS(gzcon(url(data_site)))
