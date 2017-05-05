@@ -1,6 +1,6 @@
 # Week 7 Project
 
-## Your name should appear here!
+## Nicola Morrow
 
 <!-- leave this material as is -->
 Compiled on `r date()`.
@@ -10,4 +10,42 @@ library(DataComputing)
 ```
 <!-- put your content after this line -->
 
-Here is my content!
+```{r}
+library(rvest)
+library(lubridate)
+page <- "http://en.wikipedia.org/wiki/List_of_nuclear_reactors"
+table_nodes <- page %>%
+  read_html() %>%
+  html_nodes("table")
+table_list <-
+  html_table(table_nodes[1:30], fill = TRUE)
+
+table_list[[24]]
+
+nuclearjapan <- table_list[[24]]
+
+nuclearjapan <- nuclearjapan[-1,]
+```
+
+
+### Visualization
+
+```{r}
+
+names(nuclearjapan) <- c("name", "reactornumber", "reactortype", "reactormodel", "status", "netcapacity", "grosscapacity", "constructionstartdate", "commercialoperationdate", "closure")
+
+nuclearjapan$constructionstartdate<- lubridate::dmy(nuclearjapan$constructionstartdate)
+
+nuclearjapan %>%
+  ggplot(aes(x=constructionstartdate, y=netcapacity)) + geom_point(aes(color = reactortype)) 
+```
+
+### Construction Delays 
+
+```{r}
+nuclearjapan$commercialoperationdate<- lubridate::dmy(nuclearjapan$commercialoperationdate)
+
+nuclearjapan %>%
+  ggplot(aes(x=constructionstartdate, y=name)) + geom_segment(aes(x=constructionstartdate, y=name, xend=commercialoperationdate, yend=name, color=reactornumber)) 
+```
+
