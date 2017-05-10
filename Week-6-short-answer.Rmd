@@ -1,6 +1,6 @@
 # Week 6 Short Answer Questions
 
-## Your name should appear here!
+## Nicola Morrow 
 
 <!-- leave this material as is -->
 Compiled on `r date()`.
@@ -10,4 +10,101 @@ library(DataComputing)
 ```
 <!-- put your content after this line -->
 
-Here is my content!
+### 12.1 
+
+```{r}
+BabyNames %>% 
+  group_by(sex,name) %>%
+  summarise(count = sum(count)) %>%
+  mutate(popularity =rank(desc(count))) %>%
+  filter(popularity <= 5)
+```
+
+### 12.2 
+
+```{r}
+PopularCounts <-
+  BabyNames %>%
+  group_by(year,name) %>%
+  summarise(total = sum(count)) %>%
+  mutate(ranking = ifelse(rank(desc(total)) <= 100, "Top_100", "Below")) %>%
+  group_by(year,ranking) %>%
+  summarise(total=sum(total))
+
+GlyphReady <-
+  PopularCounts %>%
+  spread(ranking, total) %>%
+  mutate(frac_in_top_100 = Top_100 / (Top_100 + Below))
+
+GlyphReady %>%
+  ggplot(aes(x=year, y=frac_in_top_100)) + geom_line() + ylim(0, NA)
+```
+
+### 12.3 
+
+a. summary function 
+
+b. neither summary nor transformation
+
+c. summary function 
+
+d. transformation function 
+
+e. transformation function 
+
+f. summary function 
+
+g. transformation function 
+
+h. summary function 
+
+### 13.1 
+
+1. There are 7 certices: China, France, Germany, Italy, UK, USA, USSR 
+
+2. There is one row for each edge, so 9 edges 
+
+### 13.2 
+
+1. The vertices are A, B, C, and D. 
+
+2. Table 2 shows the edges correctly. 
+
+3. Table 1 shows a connection between B and C, which does not exist. Table 3 shows two edges in one row. 
+
+### 13.3 
+
+NA
+
+### 13.4 
+
+1. Exports is mapped to the size of the letter. 
+
+2. Population is mapped to the shape of the gray symbol 
+
+### 14.1 
+
+```{r}
+mosaicData::CPS85 %>%
+  ggplot(aes(x=sex, y=wage)) + geom_boxplot(aes(fill=sex))
+```
+
+### 14.3
+
+A little less than 1.6 meters for women; around 1.75 meters for men 
+
+### 14.7 
+
+```{r}
+mosaicData::CPS85 %>%
+  ggplot(aes(x=educ, y=wage, color=sex)) + geom_point() + stat_smooth(method="lm") + ylim(0,15) 
+```
+
+### 14.10
+
+```{r}
+mosaicData::Galton %>%
+  ggplot(aes(x=height, color=sex)) + geom_density() + ylim(0,0.2) + xlim(55,80)
+```
+
+
