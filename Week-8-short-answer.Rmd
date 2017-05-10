@@ -1,6 +1,6 @@
 # Week 8 Short Answer Questions
 
-## Your name should appear here!
+## Nicola Morrow
 
 <!-- leave this material as is -->
 Compiled on `r date()`.
@@ -10,4 +10,12 @@ library(DataComputing)
 ```
 <!-- put your content after this line -->
 
-Here is my content!
+### 17.2 
+
+1. Prise is the response variable. The explanatory variables are living_area, bedrooms, and fireplaces. 
+
+2. No. 
+
+3. The houses in node 5 with 1 1/2 or fewer bathrooms have a price of $151,000 and those with 2 or more bathrooms have a price of $180,000. 
+
+4. The fireplaces variable is in the model for houses that are over 2816 square feet. So, having more than one fireplace is associated with a greater price, $502,000 compared to $385,000.
