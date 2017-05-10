@@ -1,6 +1,6 @@
 # Week 7 Short Answer Questions
 
-## Your name should appear here!
+## Nicola Morrow
 
 <!-- leave this material as is -->
 Compiled on `r date()`.
@@ -10,4 +10,71 @@ library(DataComputing)
 ```
 <!-- put your content after this line -->
 
-Here is my content!
+### 15.1 
+
+"April 30th, 1777" = mdy()
+
+"06-23-1912" = mdy()
+
+"3 March 1847" = dmy()
+
+"11:00 am on Nov. 11th, 1918 at 11:00 am" = mdy_hm()
+
+"July 29, 1969" = mdy()
+
+### 15.2 
+
+a. tidyr::extract_numeric()
+
+b. tidyr::extract_numeric()
+
+c. as.numeric
+
+d. tidyr::extract_numeric()
+
+e. as.numeric and tidyr::extract_numeric()
+
+f. as.numeric and tidyr::extract_numeric()
+
+g. as.numeric and tidyr::extract_numeric()
+
+h. tidyr::extract_numeric()
+
+i. tidyr::extract_numeric()
+
+### 16.1 
+
+```{r}
+BabyNames %>%
+  filter(sex == "M") %>%
+  group_by(name) %>%
+  summarise(total=sum(count)) %>%
+  filter(grepl("[aeiou]$", name)) %>%
+  arrange(desc(total)) %>%
+  head(10)
+```
+
+### 16.3 
+
+1. Each matched string will be two letters. 
+
+2. For a pattern like A[LKSZRAP], there are seven strings that match. For a pattern like D[EC], there are two strings that match (DE and DC). For a pattern like RI, there is only one string that matches. There are 61 patterns in total. 
+
+3. These are abbreviations for U.S. states. 
+
+### 16.4 
+
+```{r}
+BibleNames <- 
+  read.file("http://tiny.cc/dcf/BibleNames.csv")
+
+BibleNames %>%
+  filter(grepl("bar", name, ignore.case = TRUE))
+
+BibleNames %>%
+  filter(grepl("dam", name, ignore.case = TRUE))
+
+BibleNames %>%
+  filter(grepl("lory", name, ignore.case = TRUE))
+```
+
